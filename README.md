@@ -38,25 +38,81 @@ To visualize the yearly trend of company revenue and expenses from 2017 to 2023 
 | **Annotations & Display** | `plt.annotate()` | Places text labels with arrows pointing to peak revenue and expense points |
 | | `plt.tight_layout()`, `plt.show()` | Optimizes spacing to avoid overlapping elements and renders the figure |
 
-## Program / Code
+## Program / Code  
 
-#Company Revenue and Expense Visualization using Matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+# Company Revenue and Expense Visualization using Matplotlib  
 
-#Step 1: Create dataset
+import matplotlib.pyplot as plt  
+import numpy as np  
 
-#Step 2: Plot Revenue and Expenses
+# Step 1: Create dataset  
+years = np.arange(2017, 2024)  
 
-#Step 3: Add titles, labels, and grid
+revenue = [120, 150, 180, 210, 250, 290, 340]  
+expenses = [80, 100, 120, 140, 160, 190, 220]  
 
-#Step 4: Add legend
+print("Years:", years)  
+print("Revenue:", revenue)  
+print("Expenses:", expenses)  
 
-#Step 5: Annotate highest revenue and expense
+# Step 2: Plot Revenue and Expenses  
+plt.figure(figsize=(8, 5))  
 
-#Step 6: Adjust layout and show plot
+plt.plot(years, revenue, color='green',  
+         marker='o', linewidth=2, label='Revenue')  
+
+plt.plot(years, expenses, color='red',  
+         linestyle='--', marker='s',  
+         linewidth=2, label='Expenses')  
+
+# Step 3: Add title, labels and grid  
+plt.title("Company Revenue and Expense Analysis",  
+          fontsize=14, fontweight='bold')  
+
+plt.xlabel("Year")  
+plt.ylabel("Amount (Lakhs)")  
+
+plt.grid(True, linestyle='--', alpha=0.5)  
+
+# Step 4: Add legend  
+plt.legend(loc='upper left')  
+
+# Step 5: Find and annotate highest revenue and expense  
+max_revenue_index = np.argmax(revenue)  
+max_expense_index = np.argmax(expenses)  
+
+plt.annotate(  
+    "Highest Revenue",  
+    xy=(years[max_revenue_index], revenue[max_revenue_index]),  
+    xytext=(2019, 320),  
+    arrowprops=dict(arrowstyle='->', color='green')  
+)  
+
+plt.annotate(  
+    "Highest Expense",  
+    xy=(years[max_expense_index], expenses[max_expense_index]),  
+    xytext=(2019, 240),  
+    arrowprops=dict(arrowstyle='->', color='red')  
+)  
+
+# Step 6: Adjust layout and display plot  
+plt.tight_layout()  
+plt.show()  
 
 ## Output
+Years: [2017 2018 2019 2020 2021 2022 2023]
+
+Revenue: [120, 150, 180, 210, 250, 290, 340]
+
+Expenses: [80, 100, 120, 140, 160, 190, 220]
+
+Highest Revenue: 340 Lakhs (2023)
+
+Highest Expense: 220 Lakhs (2023)
+
+Graph displayed successfully.
+<img width="1031" height="742" alt="image" src="https://github.com/user-attachments/assets/ff5030a3-f733-47a7-83e4-20a2f162b7ee" />
+
 
 
 ## Result
